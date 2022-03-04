@@ -1,30 +1,11 @@
-## 02 | 日志系统:一条SQL更新语句是如何执行的？
+## 01 | 基础架构: 一条SQL查询语句是如何执行的？
 
-1. redo log(存储引擎 InnoDB特有 循环写 crash-safe(当数据库宕机时重启后数据不会丢失))
+<img src="https://static001.geekbang.org/resource/image/0d/d9/0d2070e8f84c4801adbfa03bda1f98d9.png" alt="img" style="zoom: 33%;" />
 
-   InnoDB的redo log为固定大小， 它读写文件为磁盘顺序读写。
+Mysql可以分为Server层和存储引擎两部分。
 
-   write pos:当前位置。
-
-   check point:当前要擦除的位置，擦除前要把记录更新到数据文件。
-
-   write pos与check point之间为剩余空间，当不够时check point会向前推进。
-
-   <img src="https://static001.geekbang.org/resource/image/16/a7/16a7950217b3f0f4ed02db5db59562a7.png" alt="img" style="zoom: 50%;" />
-
-2. bin log(Server层 追加写 主要用于归档)
-
-   bin log文件写满时不会清除之前的数据。
-
-   
-
-   
-
-   
-
-   
-
-   
+1. Server层包括连接器(建立连接、获取权限、维持和管理连接)、查询缓存(建议不用8.0版本已删除)、分析器(词法分析和语法分析)、优化器(决定使用哪个索引、各个表连接顺序)、执行器等，涵盖大部分Mysql核心功能，以及所有内置函数，还有存储过程、视图、触发器等等。
+2. 存储引擎负责数据的存储和存取。支持InnoDB、MyISAM、Memory等多个存储引擎，从Mysql5.5.5默认存储引擎为InnoDB。
 
    
 
