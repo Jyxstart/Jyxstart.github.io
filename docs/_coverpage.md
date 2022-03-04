@@ -1,4 +1,4 @@
-![logo](_media/index.jpg)
+![logo](_media/logo.png)
 
 # Jstart
 
